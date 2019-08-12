@@ -18,7 +18,7 @@
 			<!-- 上拉加载更多 -->
 			<view class="pullup-wrapper">
 				<view class="spinner-holder">
-					<text class="dot" v-for="i in 4"></text>
+					<text class="dot" v-for="i in 4" :key="i"></text>
 				</view>
 
 				<view class="no-data-text" v-text="noDataText" :class="{active: !showLoading && loadingState === 2}"></view>
@@ -129,7 +129,7 @@
 		},
 		methods: {
 			touchstartEvent(e) {
-				this.iScroll && this.iScroll.scoller.doTouchStart(e)
+				this.iScroll && this.iScroll.scroller.doTouchStart(e)
 				// this.iScroll && this.iScroll.trigger('scrollStart', e)
 			},
 
@@ -144,8 +144,8 @@
 			},
 
 			scrollTo(x = 0, y = 0, time = 0, easing = 'swipe') {
-				this.scrollLeft = x
-				this.scrollTop = y
+				this.scrollLeft = this.scrollX ? x : 0
+				this.scrollTop = this.scrollY ? y : 0
 				this.transitionDuration = time + 'ms'
 				this.transitionTimingFunction = ease[easing].style
 			},
@@ -180,6 +180,10 @@
 						resolve(data)
 					}).exec()
 				})
+			},
+
+			createAnimation() {
+				uni.createAnimation()
 			}
 		}
 	}

@@ -21,7 +21,7 @@
 		methods: {
 			requestData() {
 				let arr = []
-				for (var i = 1; i <= 10; i++) {
+				for (var i = 1; i <= 20; i++) {
 					arr.push(i)
 				}
 				this.dataList = this.dataList.concat(arr)
