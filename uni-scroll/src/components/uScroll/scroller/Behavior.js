@@ -136,10 +136,10 @@ export default class Behavior {
     const { size, position } = this.options.rect;
     const threshold = this.options.pullDownRefresh.threshold;
 
-    const wrapperRect = await getRect(this.classNameW);
+    const wrapperRect = await this.options.getRect(this.classNameW);
     this.wrapperSize = wrapperRect[size];
 
-    const contentRect = await getRect(this.classNameC);
+    const contentRect = await this.options.getRect(this.classNameC);
     this.contentSize = contentRect[size];
 
     this.relativeOffset = contentRect[position];

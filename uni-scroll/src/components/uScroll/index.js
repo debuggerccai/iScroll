@@ -4,7 +4,7 @@ import Scroller from "./scroller/Scroller";
 import { bubbling } from "./utils";
 
 export default class UScroll extends EventEmitter {
-  constructor(classNameW, classNameC, options, $vm) {
+  constructor(classNameW, classNameC, options) {
     super([
       "scrollTo",
       "refresh",
@@ -23,11 +23,11 @@ export default class UScroll extends EventEmitter {
     this.options = new Options().merge(options).process();
     this.hooks = new EventEmitter(["refresh", "enable", "disable", "destroy"]);
 
-    this.init(classNameW, classNameC, this.options, $vm);
+    this.init(classNameW, classNameC, this.options);
   }
 
-  init(classNameW, classNameC, options, $vm) {
-    this.scroller = new Scroller(classNameW, classNameC, options, $vm);
+  init(classNameW, classNameC, options) {
+    this.scroller = new Scroller(classNameW, classNameC, options);
 
     this.eventBubbling();
     this.handleAutoBlur();
