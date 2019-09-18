@@ -14,7 +14,7 @@ export default class ScrollerActions {
       options.eventPassthrough
     );
 
-    this.hooks = new EventEmitter(["scrollTo"]);
+    this.hooks = new EventEmitter(["scrollTo", 'start']);
   }
 
   handleStart(e) {
@@ -81,7 +81,7 @@ export default class ScrollerActions {
     );
   }
 
-  handlerEnd() {
+  handlerEnd(e) {
     const currentPos = this.getCurrentPos();
 
     this.scrollBehaviorX.updateDirection();

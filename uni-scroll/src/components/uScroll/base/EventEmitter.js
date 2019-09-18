@@ -15,6 +15,7 @@ export default class EventEmitter {
 			this.events[type] = []
 		}
 
+		// Warn: 直接引用参数 context 在小程序环境下会造成报错
 		this.events[type].push([fn, context])
 		return this
 	}
